@@ -1,0 +1,16 @@
+dsl_version: 0.1.0
+service:
+  name: health-api
+  ports:
+    - {{ health.port }}
+  containers:
+    - name: health-api
+      image: health-api
+      probes:
+        readiness: "httpGet"
+        liveness:
+          command: "true"
+          type: "exec"
+      daemon:
+        command:
+          gunicorn -w 4 -b 0.0.0.0:5000 main:app
