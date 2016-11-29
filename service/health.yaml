@@ -1,0 +1,16 @@
+dsl_version: 0.1.0
+service:
+  name: health
+  ports:
+    - {{ health.server_port }}
+  containers:
+    - name: health
+      image: health
+      probes:
+        readiness: "true"
+        liveness:
+          command: "true"
+          type: "exec"
+      daemon:
+        command:
+          bash main.sh

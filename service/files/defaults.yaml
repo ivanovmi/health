@@ -1,0 +1,9 @@
+configs:
+  health:
+    server_port:
+      cont: 5000
+
+sources:
+  seecloud/health:
+    git_url: http://github.com/seecloud/health
+    git_ref: master
